@@ -1,7 +1,7 @@
 .code4sa {
 	
 
-	@import "../bootstrap-less/less/bootstrap.less";
+	@import "../bootstrap/less/bootstrap.less";
 	@import "variables.less";
 	@import "mixins.less";
 
@@ -12,8 +12,8 @@
 	color: @textColor;
 	background-color: @bodyBackground;
 
-	@import "../flatly-less/less/bootswatch.less";
-	@import "../bootstrap-less/less/utilities.less"; // Has to be last to override when necessary
+	// @import "../flatly-less/less/bootswatch.less";
+	@import "../bootstrap/less/utilities.less"; // Has to be last to override when necessary
 	
 	h1 {
 		font-size: 28px;
@@ -39,7 +39,7 @@
 		background-color: rgba(240, 245, 245, 0.7);
 		border-bottom: rgba(200, 200, 200, 0.8) 1px solid;
 		.drop-shadow();
-		height: 36px;
+		height: 43px;
 		padding: 5px 10px;
 		display: fixed;
 		#logo {
