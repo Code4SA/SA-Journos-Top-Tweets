@@ -1,8 +1,23 @@
 $(function() {
 
-	var api = "https://twitter-list-watcher.herokuapp.com";
-	var local_api = "http://localhost:8080";
-	
+	Handlebars.registerHelper('since', function(date) {
+		date = Handlebars.Utils.escapeExpression(date);
+		var result = moment(date).fromNow();
+
+		return new Handlebars.SafeString(result);
+	});
+
+	Handlebars.registerHelper('num_format', function(num) {
+		num = Handlebars.Utils.escapeExpression(num);
+		result = num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		return new Handlebars.SafeString(result);
+	});
+
+	var api = "http://localhost:8080";
+	// var api = "https://twitter-list-watcher.herokuapp.com";
+
+	var tweeter_template = Handlebars.compile($("#twitter_profile_template").html());
+
 	var displayTweets = function(type) {
 		$.get(api + "/tweets/top/" + type, function(tweets) {
 			tweets.forEach(function(tweet) {
@@ -16,9 +31,20 @@ $(function() {
 			});
 		});
 	}
+
+	var displayTweeters = function(type) {
+		$.get(api + "/tweeters/top/" + type, function(tweets) {
+			tweets.forEach(function(tweeter) {
+				$('#tweeter_' + type).append(tweeter_template(tweeter));
+			});
+		});
+	}
 	
 	twttr.ready(function (twttr) {
 		displayTweets("retweets");
-		displayTweets("favourites");
+		// displayTweets("favourites");
+		displayTweeters("followers");
+		displayTweeters("favourite");
+		displayTweeters("listed");
 	});
 });

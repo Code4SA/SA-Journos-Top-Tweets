@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>SA Journos' Top Tweets</title>
 	<link rel="stylesheet" href="/public/css/style-app.css">
+	<link rel="stylesheet" href="/public/css/topjournos.css">
 	<link rel="stylesheet" href="/public/font-awesome/css/font-awesome.min.css">
 </head>
 <body class="code4sa">
@@ -33,7 +34,7 @@
 			
 			</div>
 			<h1>SA Journos' Top Tweets</h1>
-			<p>We track South African journalists' tweets and rank them by retweets and favourites. This list shows the top ten SA journos' tweets by retweets and favourites for original tweets in the past 24 hours.</p>
+			<p>We track South African journalists' tweets and rank them by retweets and favourites. This list shows the top ten SA journos' tweets by retweets for original tweets in the past 24 hours, and top journos by followers, favourites and lists.</p>
 			<p>The list of journos is based on <a href="https://twitter.com/rayjoe">Ray Joseph's</a> <a href="https://twitter.com/rayjoe/lists/sa-journos-who-tweet">SA Journos Who Tweet</a> list.</p>
 			<p>This project is part of <a href="http://mediamonitoringafrica.org">Media Monitoring Africa's</a> AgendaSetters project, in partnership with <a href="http://schoolofdata.org">School of Data</a>.</p>
 		</div>
@@ -41,15 +42,29 @@
 
 	<div id="content" class="container">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-12">
 				<div id="retweets">
 					<h2>Retweets</h2>
-				</div>		
+				</div>	
+				<div class="clear-fix"></div>	
 			</div>
-			<div class="col-md-6">
-				<div id="favourites">
-					<h2>Favourites</h2>
-				</div>		
+
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div id="tweeter_followers" class="tweeters">
+					<h1>Top Tweeters by Followers</h1>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div id="tweeter_favourite" class="tweeters">
+					<h1>Top Tweeters by Favouites</h1>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div id="tweeter_listed" class="tweeters">
+					<h1>Top Tweeters by Lists</h1>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -57,8 +72,43 @@
 		<!-- In proud partnership with <img id="partner_logo" src="/public/images/citypress.png" alt="Partner" />	 -->
 	</footer>
 	<div id="fb-root"></div>
+	<script id="twitter_profile_template" type="text/x-handlebars-template">
+		<div class='profile'>
+			<div class='row'>
+				<div class='col-sm-2'>
+					<a href="https://twitter.com/{{screen_name}}">
+					<img src="{{ profile_image_url }}" alt="{{name}}" />
+					</a>
+				</div>
+				<div class='col-sm-10'>
+					<div class='name'><a href="https://twitter.com/{{screen_name}}">{{name}}</a></div>
+					<div class='screen_name'><a href="https://twitter.com/{{screen_name}}">@{{screen_name}}</a></div>
+					<div class='created_at'>Joined Twitter {{ since created_at }}</div>
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-sm-12 description'>
+					<span class='strong'>{{ location }}</span>
+					|
+					{{ description }}
+				</div>
+			</div>
+			<div class='row'>
+				<div class='col-sm-12'>
+					<div class='stats'>
+						<span class='stat'><span class='strong'>{{ num_format followers_count }}</span> followers</span>
+						<span class='stat'><span class='strong'>{{ num_format favourites_count }}</span> favourites</span>
+						<span class='stat'><span class='strong'>{{ num_format listed_count }}</span> listed</span>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</script>
 	<script src="https://platform.twitter.com/widgets.js"></script>
 	<script src="/public/jquery/dist/jquery.min.js"></script>
+	<script src="/public/handlebars/handlebars.min.js"></script>
+	<script src="/public/moment/moment.js"></script>
 	<script src="/public/javascript/facetwit.js"></script>
 	<script src="/public/javascript/topjournos.js"></script>
 </body>
