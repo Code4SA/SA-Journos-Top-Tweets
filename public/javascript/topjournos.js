@@ -1,6 +1,6 @@
 $(function() {
 	var heroku_api = "https://twitter-list-watcher.herokuapp.com/tweets/top/retweets";
-	var local_api = "http://topjournos.dev:8080/tweets/top/retweets";
+	var local_api = "http://localhost:8080/tweets/top/retweets";
 	$.get(heroku_api, function(tweets) {
 		twttr.ready(function (twttr) {
 			tweets.forEach(function(tweet) {
