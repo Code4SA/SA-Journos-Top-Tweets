@@ -3,118 +3,91 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Under a Living Wage</title>
-	<link rel="stylesheet" href="/public/css/style.css">
+	<title>SA Journos' Top Tweets</title>
+	<link rel="stylesheet" href="/public/css/style-app.css">
 	<link rel="stylesheet" href="/public/font-awesome/css/font-awesome.min.css">
-	<!-- Load c3.css -->
-	<link href="/public/c3/c3.css" rel="stylesheet" type="text/css">
 </head>
 <body class="code4sa">
-	<div id="branding_container" class="fullscreen">
-		<div id="branding" class="container">
-			<img id="logo" src="/public/images/logo_nomap.png" alt="Code for South Africa" />
-			<div class="menu">
-				<h1>Under a Living Wage</h1>
-				<p>Millions of South Africans don't have enough food to feed themselves, school their children, or get to work. Yet they work in our homes.</p>
-				<p><a href="primrose.html" class="btn btn-primary">Primrose's Story</a></p>
-				<p><a href="#" class="btn btn-primary">Julia's Story</a></p>
-				<p><a href="#" class="btn btn-primary">The Domestic Worker Minimum Wage Lie</a></p>
-				<div class="arrows">
-					<div class="arrow">
-						<a href="primrose.html"><i class="fa fa-chevron-right"></i></a>
-					</div>
-				</div>
+	<div id="navbar">
+		
+		<a href="http://code4sa.org"><img id="logo" src="/public/images/logo-horizontal.png" alt="Code for South Africa" /></a>
+		<div id="sharing">
+			<div id="twitter">
+				<a href="http://twitter.com/code4sa"><i class="fa fa-twitter"></i></a>
+			</div>
+			<div id="facebook">
+				<a href="http://facebook.com/code4sa"><i class="fa fa-facebook"></i></a>
 			</div>
 		</div>
 	</div>
+	<div id="branding" >
+
+		<div class="container">
+			<div id="sharing">
+				<div id="twitter">
+					<a href="https://twitter.com/share" class="twitter-share-button" data-via="code4sa">Tweet</a>
+				</div>
+				<div id="facebook">
+					<div class="fb-like" data-width="100px" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+			</div>
+			
+			</div>
+			<h1>SA Journos' Top Tweets</h1>
+			<p>We track South African journalists' tweets and rank them by retweets and favourites. This list shows the top SA journos by retweets for tweets in the past 24 hours.</p>
+			<p>The list of journos is based on <a href="https://twitter.com/rayjoe">Ray Joseph's</a> <a href="https://twitter.com/rayjoe/lists/sa-journos-who-tweet">SA Journos Who Tweet</a> list.</p>
+		</div>
+	</div>
+
+	<div id="content" class="container">
+		<div id="tweets">
+			<h1>Tweets</h1>
+		</div>
+		<!-- <h1>H1 Heading</h1>
+		<h2>H2 Heading</h2>
+		<h3>H3 Heading</h3>
+		<h4>H4 Heading</h4>
+		<h5>H5 Heading</h5>
+		<h6>H6 Heading</h6>
+
+		<p>An example of typography with <strong>Bold</strong>, <em>Emphasis</em>, and <a href="#">a link.</a> </p>
+
+		<div class="well">
+			<p>A well</p>
+		</div>
+
+		<div class="alert alert-danger">
+			<p>Achtung!</p>
+		</div>
+
+		<form class="form">
+			<div class="form-group">
+				<label for="">A Label</label>
+				<input type="text" class="form-control" placeholder="An Input">
+			</div>
+			<div class="form-group">
+				<a href="#" class="btn btn-primary">A Button</a>
+			</div>
+		</form>
+		<h3>Horizontal Form</h3>
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">A Label</label>
+				<div class="col-sm-offset-2 col-sm-6">
+					<input type="text" class="form-control" placeholder="An Input">
+				</div>
+			</div>
+			<div class="form-group">
+				<a href="#" class="btn btn-primary">A Button</a>
+			</div>
+		</form> -->
+	</div>
 	<footer>
-		Produced by Code4SA | Credits
+		<!-- In proud partnership with <img id="partner_logo" src="/public/images/citypress.png" alt="Partner" />	 -->
 	</footer>
-	
-
-	<!-- Load d3.js and c3.js -->
-	<script src="/public/d3/d3.min.js" charset="utf-8"></script>
-	<script src="/public/c3/c3.min.js"></script>
-	<script>
-	var chart1 = c3.generate({
-		bindto: '#chart2',
-		data: {
-			columns: [
-				['data1', 30, 200, 100, 400, 150, 250],
-				['data2', 50, 20, 10, 40, 15, 25]
-			],
-			type: 'pie'
-		}
-	});
-
-	var chart3 = c3.generate({
-		bindto: '#chart3',
-		data: {
-			columns: [
-				['data1', 30, 200, 100, 400, 150, 250],
-				['data2', 50, 20, 10, 40, 15, 25]
-			],
-			type: 'pie'
-		}
-	});
-
-	var chart4 = c3.generate({
-		bindto: '#chart4',
-		data: {
-			columns: [
-				['data1', 30, 200, 100, 400, 150, 250],
-				['data2', 50, 20, 10, 40, 15, 25]
-			],
-			type: 'pie'
-		}
-	});
-
-	var chart5 = c3.generate({
-		bindto: '#chart5',
-		data: {
-			columns: [
-				['data1', 30, 200, 100, 400, 150, 250],
-				['data2', 50, 20, 10, 40, 15, 25]
-			],
-			type: 'pie'
-		}
-	});
-
-	var chart6 = c3.generate({
-		bindto: '#chart6',
-		data: {
-			columns: [
-				['data1', 30, 200, 100, 400, 150, 250],
-				['data2', 50, 20, 10, 40, 15, 25]
-			],
-			type: 'pie'
-		}
-	});
-
-	var chart7 = c3.generate({
-		bindto: '#chart7',
-		data: {
-			columns: [
-				['data1', 30, 200, 100, 400, 150, 250],
-				['data2', 50, 20, 10, 40, 15, 25]
-			],
-			type: 'pie'
-		}
-	});
-	
-	var chart2 = c3.generate({
-		bindto: '#chart1',
-		data: {
-			columns: [
-				['data1', 30, 200, 100, 400, 150, 250],
-				['data2', 50, 20, 10, 40, 15, 25]
-			],
-			types: {
-				data1: 'area',
-				data2: 'area-spline'
-			}
-		}
-	});
-	</script>
+	<div id="fb-root"></div>
+	<script src="https://platform.twitter.com/widgets.js"></script>
+	<script src="/public/jquery/dist/jquery.min.js"></script>
+	<script src="/public/javascript/facetwit.js"></script>
+	<script src="/public/javascript/topjournos.js"></script>
 </body>
 </html>
