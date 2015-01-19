@@ -42,7 +42,7 @@ $(function() {
 	
 	twttr.ready(function (twttr) {
 		displayTweets("retweets");
-		// displayTweets("favourites");
+		displayTweets("favourites");
 		displayTweeters("followers");
 		displayTweeters("favourite");
 		displayTweeters("listed");
