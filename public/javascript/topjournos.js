@@ -13,8 +13,8 @@ $(function() {
 		return new Handlebars.SafeString(result);
 	});
 
-	var api = "http://localhost:8080";
-	// var api = "https://twitter-list-watcher.herokuapp.com";
+	// var api = "http://localhost:8080";
+	var api = "https://twitter-list-watcher.herokuapp.com";
 
 	var tweeter_template = Handlebars.compile($("#twitter_profile_template").html());
 
