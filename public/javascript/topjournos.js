@@ -19,10 +19,8 @@ $(function() {
 	var tweeter_template = Handlebars.compile($("#twitter_profile_template").html());
 
 	var displayTweets = function(type) {
-		console.log("displayTweets", type);
 		$.get(api + "/tweets/top/" + type)
 		.done(function(tweets) {
-			console.log("Here");
 			tweets.forEach(function(tweet) {
 				twttr.widgets.createTweet(
 					tweet.id_str,
@@ -42,7 +40,6 @@ $(function() {
 	var displayTweeters = function(type) {
 		$.get(api + "/tweeters/top/" + type)
 		.done(function(tweets) {
-			console.log("Here");
 			tweets.forEach(function(tweeter) {
 				$('#tweeter_' + type).append(tweeter_template(tweeter));
 			});
