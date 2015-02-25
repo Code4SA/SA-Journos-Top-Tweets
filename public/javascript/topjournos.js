@@ -19,7 +19,10 @@ $(function() {
 	var tweeter_template = Handlebars.compile($("#twitter_profile_template").html());
 
 	var displayTweets = function(type) {
-		$.get(api + "/tweets/top/" + type, function(tweets) {
+		console.log("displayTweets", type);
+		$.get(api + "/tweets/top/" + type)
+		.done(function(tweets) {
+			console.log("Here");
 			tweets.forEach(function(tweet) {
 				twttr.widgets.createTweet(
 					tweet.id_str,
@@ -29,22 +32,32 @@ $(function() {
 					}
 				)
 			});
-		});
+		})
+		.fail(function(err) {
+			console.log("Err", err);
+		})
+		;
 	}
 
 	var displayTweeters = function(type) {
-		$.get(api + "/tweeters/top/" + type, function(tweets) {
+		$.get(api + "/tweeters/top/" + type)
+		.done(function(tweets) {
+			console.log("Here");
 			tweets.forEach(function(tweeter) {
 				$('#tweeter_' + type).append(tweeter_template(tweeter));
 			});
-		});
+		})
+		.fail(function(err) {
+			console.log("Err", err);
+		})
+		;
 	}
 	
-	twttr.ready(function (twttr) {
+	// twttr.ready(function (twttr) {
 		displayTweets("retweets");
 		displayTweets("favourites");
 		displayTweeters("followers");
 		displayTweeters("favourite");
 		displayTweeters("listed");
-	});
+	// });
 });
