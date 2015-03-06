@@ -62,9 +62,9 @@ $(function() {
 	// twttr.ready(function (twttr) {
 		displayTweets("retweet_count");
 		displayTweets("favourite_count");
-		// displayTweeters("followers");
-		// displayTweeters("favourite");
-		// displayTweeters("listed");
+		displayTweeters("followers");
+		displayTweeters("favourite");
+		displayTweeters("listed");
 	// });
 
 	$(".time-select-item").click(function() {
