@@ -17,8 +17,8 @@ $(function() {
 		return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 
-	// var api = "http://localhost:8080";
-	var api = "https://twitter-list-watcher.herokuapp.com";
+	var api = "http://localhost:8080";
+	// var api = "https://twitter-list-watcher.herokuapp.com";
 
 	var tweeter_template = Handlebars.compile($("#twitter_profile_template").html());
 
@@ -61,7 +61,7 @@ $(function() {
 	
 	// twttr.ready(function (twttr) {
 		displayTweets("retweet_count");
-		displayTweets("favourite_count");
+		displayTweets("favorite_count");
 		displayTweeters("followers");
 		displayTweeters("favourite");
 		displayTweeters("listed");
@@ -72,7 +72,7 @@ $(function() {
 		$(this).parent().addClass("active");
 		var ts = $(this).attr("href").replace("#", "");
 		displayTweets("retweet_count", ts);
-		displayTweets("favourite_count", ts);
+		displayTweets("favorite_count", ts);
 	})
 
 	//Bubbles
