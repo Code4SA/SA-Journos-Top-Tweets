@@ -17,8 +17,8 @@ $(function() {
 		return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
 
-	var api = "http://localhost:8080";
-	// var api = "https://twitter-list-watcher.herokuapp.com";
+	// var api = "http://localhost:8080";
+	var api = "https://twitter-list-watcher.herokuapp.com";
 
 	var tweeter_template = Handlebars.compile($("#twitter_profile_template").html());
 
