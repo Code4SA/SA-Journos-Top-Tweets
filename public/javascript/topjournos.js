@@ -75,67 +75,67 @@ $(function() {
 		displayTweets("favorite_count", ts);
 	})
 
-	//Bubbles
-// 	var width = 600,
-// 		height = 650,
-// 		format = d3.format(",d"),
-// 		color = d3.scale.category20c(),
-// 		date_format = d3.time.format("%Y-%m-%d");
+	//Hashtag Bubbles
+	var width = 600,
+		height = 650,
+		format = d3.format(",d"),
+		color = d3.scale.category20c(),
+		date_format = d3.time.format("%Y-%m-%d");
 
-// 	var bubble = d3.layout.pack()
-// 		.sort(null)
-// 		.size([width, height])
-// 		.padding(3)
-// 		.value(function(d) { return d.size })
+	var bubble = d3.layout.pack()
+		.sort(null)
+		.size([width, height])
+		.padding(3)
+		.value(function(d) { return d.size })
 
-// 	var svg = d3.select("#bubbles").append("svg")
-// 		.attr("width", "100%")
-// 		.attr("height", height)
-// 		.attr("class", "bubble");
 
-// 	d3.json(api + "/tweets/top/retweets", function(err, data) {
-// 		console.log(data);
-// 		data.forEach(function(item) {
-// 			item.size = item.retweet_count;
-// 		});
-// 		var node = svg.selectAll(".node")
-// 			.data(bubble.nodes({ children: data })
-// 			.filter(function(d) { return !d.children }))
-// 			.enter()
-// 			.append("g")
-// 			.attr("class", "node")
-// 			.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-// 			;
-// 		node.append("circle")
-// 			.attr("r", function(d) { return d.r; })
-// 			.style("fill", function(d) { return color(d.retweet_count) })
-// 			.attr("data-name", function(d) { return d.name })
+	var displayHashtags = function(days) {
+		$("#hashtags").html("");
+		var svg = d3.select("#hashtags").append("svg")
+		.attr("width", "100%")
+		.attr("height", height)
+		.attr("class", "bubble");
+		d3.json(api + "/hashtags?days=" + parseInt(days), function(err, data) {
+			console.log(data);
 			
-			
-// 		node.append("text")
-// 			.attr("dy", function(d) {
-// 				return "-" + (d.r - 25) + "px"
-// 			})
-// 			.style("text-anchor", "middle")
-// 			.style("cursor", "pointer")
-// 			.style("text-decoration", "underline")
-// 			.style("font-size", "0.9em")
-// 			.text(function(d) { if (d.r > 25) return "@" + d.user.screen_name } )
-// 			.on("click", function(d) {
-// 				location.href="https://twitter.com/" + d.user.screen_name;
-// 			})
-// 			;
-// 		var r = 0;
-// 		node.append("text")
-// 			.attr("dy", function(d) {
-// 				return "-" + (d.r - 45) + "px"
-// 			})
-// 			.style("text-anchor", "middle")
-// 			.style("font-size", "0.8em")
-// 			.text(function(d) { r = d.r; if (d.r > 25) return  num_format(d.text) } )
-// 			.call(wrap, r * 2)
-// 			;
-// 	});
+			data.forEach(function(item) {
+				item.size = item.value;
+			});
+			var node = svg.selectAll(".node")
+				.data(bubble.nodes({ children: data })
+				.filter(function(d) { return !d.children }))
+				.enter()
+				.append("g")
+				.attr("class", "node")
+				.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+				;
+			node.append("circle")
+				.attr("r", function(d) { return d.r; })
+				.style("fill", function(d) { return color(d.retweet_count) })
+				.attr("data-name", function(d) { return d.name })
+				
+				
+			node.append("text")
+				.style("text-anchor", "middle")
+				.style("cursor", "pointer")
+				.attr("dy", ".3em")
+				.text(function(d) { return d._id } )
+				;
+			node.on("click", function(d) {
+				location.href = "https://twitter.com/hashtag/" + d._id.substr(1);
+			});
+		});
+	}
+
+	$(".hashtag-select-item").click(function() {
+		console.log("Click");
+		$(".hashtag-select>li").removeClass("active");
+		$(this).parent().addClass("active");
+		var ts = $(this).attr("href").replace("#", "");
+		displayHashtags(ts);
+	});
+
+	displayHashtags(7);
 
 // function wrap(text, width) {
 //   text.each(function() {
